@@ -1,0 +1,61 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&f[]=clash-display@700,600,500,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-title: 'Clash Display', sans-serif;
+  --font-satoshi: 'Satoshi', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  font-weight: 600;
+}
+
+p {
+  font-family: var(--font-inter);
+  font-weight: 300;
+  /* Light/Regular per user request */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Brand Selection */
+::selection {
+  background: #06b6d4;
+  /* Cyan */
+  color: #000000;
+}
