@@ -61,17 +61,17 @@ export default function Contact() {
             <div className="max-w-7xl mx-auto relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
                 {/* Left Column: Transmission Status */}
-                <div className="space-y-12">
-                    <div>
+                <div className="space-y-8 md:space-y-12">
+                    <div className="text-center md:text-left">
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-5xl md:text-7xl font-bold tracking-tighter mb-6"
+                            className="text-3xl md:text-7xl font-bold tracking-tighter mb-4 md:mb-6"
                         >
                             INITIATE<br /><span className="text-white/40">UPLINK</span>
                         </motion.h2>
-                        <p className="text-xl text-white/50 max-w-md leading-relaxed">
+                        <p className="text-sm md:text-xl text-white/50 max-w-md mx-auto md:mx-0 leading-relaxed">
                             Ready to transmit your vision? Establish a secure connection with our team.
                         </p>
                     </div>
@@ -91,14 +91,14 @@ export default function Contact() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className={`group flex items-center gap-6 p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300 ${item.href ? 'hover:border-white/30 hover:bg-white/10 cursor-pointer' : 'cursor-default'}`}
+                                    className={`group flex items-center gap-3 md:gap-6 p-3 md:p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-300 ${item.href ? 'hover:border-white/30 hover:bg-white/10 cursor-pointer' : 'cursor-default'}`}
                                 >
-                                    <div className={`w-12 h-12 rounded-full bg-white/10 flex items-center justify-center transition-colors duration-300 ${item.href ? 'group-hover:bg-white text-black' : 'text-white'}`}>
-                                        <item.icon className={`w-5 h-5 transition-colors ${item.href ? 'text-white group-hover:text-black' : 'text-white'}`} />
+                                    <div className={`w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center transition-colors duration-300 ${item.href ? 'group-hover:bg-white text-black' : 'text-white'}`}>
+                                        <item.icon className={`w-3 h-3 md:w-5 md:h-5 transition-colors ${item.href ? 'text-white group-hover:text-black' : 'text-white'}`} />
                                     </div>
                                     <div>
-                                        <p className="text-xs tracking-widest text-white/40 mb-1">{item.label}</p>
-                                        <p className="text-lg font-medium">{item.value}</p>
+                                        <p className="text-[8px] md:text-xs tracking-widest text-white/40 mb-1">{item.label}</p>
+                                        <p className="text-xs md:text-lg font-medium truncate">{item.value}</p>
                                     </div>
                                 </Component>
                             );
@@ -127,10 +127,10 @@ export default function Contact() {
                                     type="text"
                                     required
                                     onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-4 text-xl outline-none focus:border-white transition-colors peer"
+                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer"
                                     placeholder=" "
                                 />
-                                <label className="absolute left-0 top-4 text-white/50 text-lg transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
+                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
                                     NAME
                                 </label>
                                 <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
@@ -143,10 +143,10 @@ export default function Contact() {
                                     type="email"
                                     required
                                     onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-4 text-xl outline-none focus:border-white transition-colors peer"
+                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer"
                                     placeholder=" "
                                 />
-                                <label className="absolute left-0 top-4 text-white/50 text-lg transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
+                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
                                     EMAIL
                                 </label>
                                 <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
@@ -158,10 +158,10 @@ export default function Contact() {
                                     name="assetsLink"
                                     type="text"
                                     onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-4 text-xl outline-none focus:border-white transition-colors peer"
+                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer"
                                     placeholder=" "
                                 />
-                                <label className="absolute left-0 top-4 text-white/50 text-lg transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
+                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
                                     ASSETS LINK (DRIVE/DROPBOX)
                                 </label>
                                 <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
@@ -171,13 +171,13 @@ export default function Contact() {
                             <div className="relative group">
                                 <textarea
                                     name="message"
-                                    rows={4}
+                                    rows={3}
                                     required
                                     onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-4 text-xl outline-none focus:border-white transition-colors peer resize-none"
+                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer resize-none"
                                     placeholder=" "
                                 />
-                                <label className="absolute left-0 top-4 text-white/50 text-lg transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
+                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
                                     MESSAGE PARAMETERS
                                 </label>
                                 <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
@@ -192,10 +192,10 @@ export default function Contact() {
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0, y: -20 }}
                                         type="submit"
-                                        className="w-full py-4 bg-white text-black font-bold text-lg tracking-widest hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group"
+                                        className="w-full py-2 md:py-4 bg-white text-black font-bold text-[10px] md:text-lg tracking-widest hover:bg-white/90 transition-colors flex items-center justify-center gap-2 group"
                                     >
                                         INITIALIZE UPLINK
-                                        <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        <Send className="w-2.5 h-2.5 md:w-4 md:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                     </motion.button>
                                 )}
 

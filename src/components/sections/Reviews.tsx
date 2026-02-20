@@ -69,13 +69,13 @@ function ReviewCard({ review, skewX, scale }: { review: Review; skewX: any; scal
             onMouseLeave={() => setIsHovered(false)}
             initial="rest"
             animate={isHovered ? "hover" : "rest"}
-            className="w-[350px] p-8 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-white/20 hover:z-50 transition-colors select-none group relative overflow-visible flex-shrink-0"
+            className="w-[280px] md:w-[350px] p-6 md:p-8 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-white/20 hover:z-50 transition-colors select-none group relative overflow-visible flex-shrink-0"
         >
             <div className="flex gap-1 mb-4 relative z-20 perspective-500">
                 {/* Total Stars Background (Dimmed) */}
                 <div className="absolute inset-0 flex gap-1 z-0 opacity-20">
                     {[...Array(5)].map((_, i) => (
-                        <Star key={`bg-${i}`} className="w-4 h-4 text-white" />
+                        <Star key={`bg-${i}`} className="w-3 h-3 md:w-4 md:h-4 text-white" />
                     ))}
                 </div>
 
@@ -89,7 +89,7 @@ function ReviewCard({ review, skewX, scale }: { review: Review; skewX: any; scal
                             className="relative z-10"
                         >
                             <Star
-                                className={`w-4 h-4 fill-yellow-500 text-yellow-500 ${isHovered ? 'drop-shadow-[0_0_15px_rgba(234,179,8,0.8)]' : ''}`}
+                                className={`w-3 h-3 md:w-4 md:h-4 fill-yellow-500 text-yellow-500 ${isHovered ? 'drop-shadow-[0_0_15px_rgba(234,179,8,0.8)]' : ''}`}
                             />
                         </motion.div>
 
@@ -117,10 +117,10 @@ function ReviewCard({ review, skewX, scale }: { review: Review; skewX: any; scal
                 ))}
             </div>
 
-            <p className="text-white/70 mb-6 leading-relaxed text-sm relative z-10 transition-colors duration-300 group-hover:text-white">"{review.content}"</p>
+            <p className="text-white/70 mb-6 leading-relaxed text-xs md:text-sm relative z-10 transition-colors duration-300 group-hover:text-white">"{review.content}"</p>
 
             <div className="relative z-10 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-white/5">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border border-white/20 bg-white/5">
                     {review.avatar ? (
                         <img src={urlForImage(review.avatar).url()} alt={review.clientName} className="w-full h-full object-cover" />
                     ) : (
@@ -128,8 +128,8 @@ function ReviewCard({ review, skewX, scale }: { review: Review; skewX: any; scal
                     )}
                 </div>
                 <div>
-                    <h4 className="text-white font-bold group-hover:text-yellow-500 transition-colors duration-300">{review.clientName}</h4>
-                    <span className="text-white/30 text-xs uppercase tracking-widest">{review.role} • {review.platform || 'Direct'}</span>
+                    <h4 className="text-white font-bold text-sm md:text-base group-hover:text-yellow-500 transition-colors duration-300">{review.clientName}</h4>
+                    <span className="text-white/30 text-[10px] md:text-xs uppercase tracking-widest">{review.role} • {review.platform || 'Direct'}</span>
                 </div>
             </div>
         </motion.div>
@@ -167,7 +167,7 @@ export default function Reviews() {
                 <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tighter text-center">Client Words</h2>
                 <div className="flex justify-center items-center gap-2 mt-4 text-white/40">
                     <span className="w-12 h-[1px] bg-white/20"></span>
-                    <p className="text-sm uppercase tracking-widest">Trusted by Global Brands</p>
+                    <p className="text-xs md:text-sm uppercase tracking-widest">Trusted by Global Brands</p>
                     <span className="w-12 h-[1px] bg-white/20"></span>
                 </div>
             </div>

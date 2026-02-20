@@ -42,7 +42,7 @@ export default function Hero() {
     const [contacted, setContacted] = useState(false);
 
     return (
-        <section id="hero" className="relative flex flex-col items-center justify-start pt-12 md:pt-16 min-h-screen w-full px-4 text-center overflow-hidden">
+        <section id="hero" className="relative flex flex-col items-center justify-start pt-12 md:pt-16 pb-24 md:pb-0 md:min-h-screen w-full px-4 text-center overflow-hidden">
             {/* Animated Logo */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -69,7 +69,7 @@ export default function Hero() {
             <div className="mb-2 mt-[60px] relative z-10">
                 <CinematicText
                     text="Welcome to WARA gfx"
-                    className="text-4xl md:text-6xl font-bold tracking-tighter text-white"
+                    className="text-3xl md:text-6xl font-bold tracking-tighter text-white"
                     delay={0.5}
                 />
             </div>
@@ -77,7 +77,7 @@ export default function Hero() {
             <div className="max-w-2xl mb-8 relative z-10">
                 <CinematicText
                     text="We turn your vision into cinematic reality."
-                    className="text-white/60 text-lg md:text-xl"
+                    className="text-white/60 text-sm md:text-xl"
                     delay={1.2}
                 />
             </div>
@@ -149,8 +149,7 @@ export default function Hero() {
                             onMouseEnter={() => setContacted(true)}
                             onMouseLeave={() => setContacted(false)}
                             whileTap={{ scale: 0.97 }}
-                            className="relative px-8 py-4 bg-white text-black font-bold rounded-full flex items-center gap-2 overflow-hidden cursor-pointer"
-                            style={{ width: "240px", justifyContent: "center" }}
+                            className="relative w-[200px] md:w-[240px] px-6 py-3 md:px-8 md:py-4 bg-white text-black font-bold rounded-full flex items-center justify-center gap-2 overflow-hidden cursor-pointer"
                         >
                             {/* Shimmer sweep on hover */}
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700 rounded-full pointer-events-none" />
@@ -164,7 +163,7 @@ export default function Hero() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
                                         transition={{ duration: 0.25 }}
-                                        className="flex items-center gap-2 relative z-10"
+                                        className="flex items-center gap-2 relative z-10 text-sm md:text-base"
                                     >
                                         Try a free sample
                                         <ArrowRight className="w-4 h-4" />
@@ -176,7 +175,7 @@ export default function Hero() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
                                         transition={{ duration: 0.25 }}
-                                        className="flex items-center gap-2 relative z-10"
+                                        className="flex items-center gap-2 relative z-10 text-sm md:text-base"
                                     >
                                         Click to contact
                                         <Mail className="w-4 h-4" />
@@ -187,7 +186,7 @@ export default function Hero() {
                     </div>
                 </Magnetic>
 
-                <p className="text-xs text-white/30 max-w-xs text-center border-t border-white/5 pt-4">
+                <p className="text-[10px] md:text-xs text-white/30 max-w-xs text-center border-t border-white/5 pt-4">
                     Click to get a <span className="text-white/60">free 30 second sample</span> video on your raw files completely for <span className="text-white/60 font-bold">FREE</span>
                 </p>
             </motion.div>

@@ -59,7 +59,7 @@ function FounderCard({ founder, index }: { founder: typeof founders[0], index: n
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
             onMouseMove={handleMouseMove}
-            className="group relative flex flex-col items-center text-center p-8 rounded-3xl border border-white/5 bg-white/5 overflow-hidden transform-gpu max-w-md mx-auto w-full" // Added max-w-md and mx-auto
+            className="group relative flex flex-col items-center text-center p-6 md:p-8 rounded-3xl border border-white/5 bg-white/5 overflow-hidden transform-gpu max-w-sm md:max-w-md mx-auto w-full"
         >
             {/* Interactive Spotlight Background */}
             <motion.div
@@ -68,7 +68,7 @@ function FounderCard({ founder, index }: { founder: typeof founders[0], index: n
             />
 
             {/* Avatar with Sonar Effect */}
-            <div className="relative w-48 h-48 md:w-56 md:h-56 mb-8 z-10 transition-transform duration-500 group-hover:scale-105">
+            <div className="relative w-32 h-32 md:w-56 md:h-56 mb-6 md:mb-8 z-10 transition-transform duration-500 group-hover:scale-105">
 
                 {/* Sonar Ripple Effect - Universal (Always Active) */}
                 <div className="absolute inset-0 rounded-full border border-white/20 scale-100 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30" />
@@ -100,8 +100,8 @@ function FounderCard({ founder, index }: { founder: typeof founders[0], index: n
 
             {/* Text Content with Parallax */}
             <motion.div style={{ x: moveX, y: moveY }} className="relative z-10">
-                <h3 className="text-3xl font-bold text-white mb-2">{founder.name}</h3>
-                <p className="text-white/50 mb-6 uppercase tracking-widest text-sm font-medium">{founder.role}</p>
+                <h3 className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">{founder.name}</h3>
+                <p className="text-white/50 mb-4 md:mb-6 uppercase tracking-widest text-[10px] md:text-sm font-medium">{founder.role}</p>
 
                 {/* Skills - "Data Decryption" feel */}
                 <div className="flex flex-wrap justify-center gap-2 mb-8">

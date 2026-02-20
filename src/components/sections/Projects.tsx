@@ -70,15 +70,15 @@ export default function Projects() {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tighter mix-blend-difference">Our Projects</h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tighter mix-blend-difference text-center md:text-left">Our Projects</h2>
 
                 {/* Filters with Creative Mix-Blend Animation */}
-                <div className="flex flex-wrap gap-4 mb-12 relative z-20">
+                <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mb-12 relative z-20">
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className="relative px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 isolate"
+                            className="relative px-4 py-2 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-bold transition-colors duration-300 isolate"
                             style={{
                                 color: activeTab === tab.id ? "black" : "rgba(255,255,255,0.6)"
                             }}

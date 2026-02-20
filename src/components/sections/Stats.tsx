@@ -132,7 +132,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
                 <motion.span
                     ref={ref}
                     style={{ filter: blurFilter, y: yOffset }}
-                    className="inline-block will-change-transform py-8 px-4"
+                    className="inline-block will-change-transform py-8 px-1 md:px-4"
                 >
                     0
                 </motion.span>
@@ -220,27 +220,29 @@ function GrowthGraph({ platform, setPlatform }: { platform: Platform, setPlatfor
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
                 style={{ rotateX: springRotateX, rotateY: springRotateY, transformStyle: "preserve-3d" }}
-                className="w-full mt-12 bg-white/5 border border-white/5 rounded-2xl relative overflow-hidden group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] backdrop-blur-md"
+                className="w-full mt-12 bg-white/5 border border-white/5 rounded-2xl relative group shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] backdrop-blur-md"
             >
-                {/* 3D Scanline Beam */}
-                <motion.div
-                    className="absolute inset-y-0 w-[50px] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 z-0 pointer-events-none"
-                    animate={{ left: ["-20%", "120%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 2 }}
-                />
+                {/* Background & Effects Wrapper (Clipped) */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                    {/* 3D Scanline Beam */}
+                    <motion.div
+                        className="absolute inset-y-0 w-[50px] bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 z-0"
+                        animate={{ left: ["-20%", "120%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 2 }}
+                    />
+                </div>
 
-                {/* Header / Platform Dropdown with Animated Icon */}
-                <div className="flex justify-between items-center mb-8 p-6 pb-0 z-20 relative transform-style-3d translate-z-10"> {/* Lifted content */}
-                    <div className="flex items-center gap-4">
+                <div className="flex justify-between items-center mb-4 md:mb-8 p-3 md:p-6 pb-0 z-20 relative transform-style-3d translate-z-10"> {/* Lifted content */}
+                    <div className="flex items-center gap-2 md:gap-4">
 
                         {/* Platform Dropdown */}
-                        <div className="relative w-52" ref={dropdownRef}>
+                        <div className="relative w-32 md:w-52" ref={dropdownRef}>
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="flex items-center justify-between w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-lg font-bold text-white hover:bg-white/10 hover:border-white/20 transition-all shadow-lg"
+                                className="flex items-center justify-between w-full px-2 py-1.5 md:px-4 md:py-3 bg-white/5 border border-white/10 rounded-lg text-[10px] md:text-lg font-bold text-white hover:bg-white/10 hover:border-white/20 transition-all shadow-lg"
                             >
-                                <span>{platform}</span>
-                                <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                                <span className="truncate">{platform}</span>
+                                <ChevronDown className={`w-3 h-3 md:w-4 md:h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                             </button>
 
                             <AnimatePresence>
@@ -258,7 +260,7 @@ function GrowthGraph({ platform, setPlatform }: { platform: Platform, setPlatfor
                                                     setPlatform(p as Platform);
                                                     setIsOpen(false);
                                                 }}
-                                                className="w-full text-left px-6 py-4 text-white/70 hover:text-white hover:bg-white/5 transition-colors text-sm border-b border-white/5 last:border-0"
+                                                className="w-full text-left px-3 py-2 md:px-6 md:py-4 text-white/70 hover:text-white hover:bg-white/5 transition-colors text-[10px] md:text-sm border-b border-white/5 last:border-0 truncate"
                                             >
                                                 {p}
                                             </button>
@@ -290,7 +292,7 @@ function GrowthGraph({ platform, setPlatform }: { platform: Platform, setPlatfor
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }}
-                                    className="relative w-8 h-8 flex items-center justify-center text-white"
+                                    className="relative w-5 h-5 md:w-8 md:h-8 flex items-center justify-center text-white"
                                 >
                                     <PlatformIcon platform={platform} isActive={false} className="w-full h-full" />
                                 </motion.div>
@@ -300,7 +302,7 @@ function GrowthGraph({ platform, setPlatform }: { platform: Platform, setPlatfor
                 </div>
 
                 {/* Graph Container */}
-                <div className="relative w-full aspect-[4/1] md:aspect-[6/1]">
+                <div className="relative w-full aspect-[5/1] md:aspect-[6/1]">
                     <AnimatePresence mode="wait">
                         <motion.svg
                             key={platform}
@@ -383,18 +385,18 @@ function GrowthGraph({ platform, setPlatform }: { platform: Platform, setPlatfor
                                     >
                                         {/* Dot — always closest to graph line */}
                                         <div className="relative">
-                                            <div className="w-3 h-3 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,1)] z-10 relative" />
+                                            <div className="w-2 h-2 md:w-3 md:h-3 bg-white rounded-full shadow-[0_0_15px_rgba(255,255,255,1)] z-10 relative" />
                                             <div className="absolute inset-0 bg-white rounded-full animate-ping opacity-50" />
                                         </div>
 
                                         {/* Connecting line */}
-                                        <div className={`w-[1px] h-6 pointer-events-none ${pointsUp
+                                        <div className={`w-[1px] h-4 md:h-6 pointer-events-none ${pointsUp
                                             ? 'bg-gradient-to-t from-white/40 to-transparent'
                                             : 'bg-gradient-to-b from-white/40 to-transparent'
                                             }`} />
 
                                         {/* Text label — no bg, just clean text */}
-                                        <span className={`text-[10px] text-white/70 whitespace-nowrap font-medium tracking-wide ${pointsUp ? 'mb-0.5' : 'mt-0.5'}`}>
+                                        <span className={`text-[8px] md:text-[10px] text-white/70 whitespace-nowrap font-medium tracking-wide ${pointsUp ? 'mb-0.5' : 'mt-0.5'}`}>
                                             {m.label}
                                         </span>
                                     </motion.div>
@@ -467,13 +469,13 @@ export default function Stats() {
                 </div>
 
                 {/* Counters Grid (Controlled by Time Range) */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center w-full mb-8">
+                <div className="grid grid-cols-3 gap-2 md:gap-12 text-center w-full mb-8">
                     {statsData[timeRange]?.stats?.map((stat) => (
-                        <div key={stat.label} className="p-8 border-l border-white/5 first:border-l-0 flex flex-col items-center justify-center">
-                            <div className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tighter flex justify-center">
+                        <div key={stat.label} className="p-2 md:p-8 md:border-l border-white/5 first:border-l-0 flex flex-col items-center justify-center">
+                            <div className="text-xl md:text-7xl font-bold text-white mb-2 md:mb-4 tracking-tighter flex justify-center">
                                 <Counter value={stat.value} suffix={stat.suffix} />
                             </div>
-                            <p className="text-white/40 uppercase tracking-widest text-sm">{stat.label}</p>
+                            <p className="text-white/40 uppercase tracking-widest text-[10px] md:text-sm">{stat.label}</p>
                         </div>
                     )) || null}
                 </div>
