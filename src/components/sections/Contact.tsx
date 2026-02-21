@@ -4,6 +4,39 @@ import { useState } from "react";
 import { Mail, Send, CheckCircle, Smartphone, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const ContactInput = ({ name, id, type = "text", required, onChange, label, isTextArea = false }: any) => {
+    return (
+        <div className="relative group overflow-hidden pt-4 md:pt-6">
+            {isTextArea ? (
+                <textarea
+                    name={name}
+                    id={id}
+                    required={required}
+                    onChange={onChange}
+                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer resize-none relative z-10"
+                    placeholder=" "
+                    rows={3}
+                />
+            ) : (
+                <input
+                    name={name}
+                    id={id}
+                    type={type}
+                    required={required}
+                    onChange={onChange}
+                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer relative z-10"
+                    placeholder=" "
+                />
+            )}
+
+            <label className="absolute left-0 top-5 md:top-10 text-white/50 text-[10px] md:text-lg transition-all peer-focus:top-0 md:peer-focus:top-0 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:top-0 md:peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none z-10">
+                {label}
+            </label>
+            <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white peer-focus:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white] z-10" />
+        </div>
+    );
+};
+
 export default function Contact() {
     const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle');
 
@@ -117,71 +150,33 @@ export default function Contact() {
                         {/* Scanline Texture */}
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
 
-                        <div className="space-y-8 relative z-10 flex-grow">
-
-                            {/* Name field */}
-                            <div className="relative group">
-                                <input
-                                    name="name"
-                                    id="contact-name-input"
-                                    type="text"
-                                    required
-                                    onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer"
-                                    placeholder=" "
-                                />
-                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
-                                    NAME
-                                </label>
-                                <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
-                            </div>
-
-                            {/* Email field */}
-                            <div className="relative group">
-                                <input
-                                    name="email"
-                                    type="email"
-                                    required
-                                    onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer"
-                                    placeholder=" "
-                                />
-                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
-                                    EMAIL
-                                </label>
-                                <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
-                            </div>
-
-                            {/* Assets Link field */}
-                            <div className="relative group">
-                                <input
-                                    name="assetsLink"
-                                    type="text"
-                                    onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer"
-                                    placeholder=" "
-                                />
-                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
-                                    ASSETS LINK (DRIVE/DROPBOX)
-                                </label>
-                                <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
-                            </div>
-
-                            {/* Message field */}
-                            <div className="relative group">
-                                <textarea
-                                    name="message"
-                                    rows={3}
-                                    required
-                                    onChange={handleInputChange}
-                                    className="w-full bg-transparent border-b border-white/20 py-1.5 md:py-4 text-xs md:text-xl outline-none focus:border-white transition-colors peer resize-none"
-                                    placeholder=" "
-                                />
-                                <label className="absolute left-0 top-1 md:top-4 text-white/50 text-[10px] md:text-lg transition-all peer-focus:-top-3 md:peer-focus:-top-6 peer-focus:text-[9px] md:peer-focus:text-xs peer-focus:text-white/70 peer-not-placeholder-shown:-top-3 md:peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:text-[9px] md:peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-white/70 pointer-events-none">
-                                    MESSAGE PARAMETERS
-                                </label>
-                                <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white group-focus-within:w-full transition-all duration-500 ease-out shadow-[0_0_10px_white]" />
-                            </div>
+                        <div className="space-y-4 md:space-y-8 relative z-10 flex-grow">
+                            <ContactInput
+                                name="name"
+                                id="contact-name-input"
+                                required
+                                onChange={handleInputChange}
+                                label="NAME"
+                            />
+                            <ContactInput
+                                name="email"
+                                type="email"
+                                required
+                                onChange={handleInputChange}
+                                label="EMAIL"
+                            />
+                            <ContactInput
+                                name="assetsLink"
+                                onChange={handleInputChange}
+                                label="ASSETS LINK (DRIVE/DROPBOX)"
+                            />
+                            <ContactInput
+                                name="message"
+                                required
+                                onChange={handleInputChange}
+                                label="MESSAGE PARAMETERS"
+                                isTextArea
+                            />
                         </div>
 
                         <div className="mt-12">

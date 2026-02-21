@@ -4,6 +4,7 @@ import { Search, Menu, X } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "../ui/Magnetic";
+import { useAudio } from "@/hooks/useAudio";
 
 const navItems = [
     { name: "Projects", href: "#projects" },
@@ -15,9 +16,11 @@ const navItems = [
 export default function Header() {
     const lenis = useLenis();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { playHover, playClick } = useAudio();
 
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
+        playClick();
         if (lenis) {
             lenis.scrollTo(href, { duration: 1.5 });
         } else {
@@ -27,13 +30,16 @@ export default function Header() {
     };
 
     // Toggle menu
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const toggleMenu = () => {
+        playClick();
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
         <header className="fixed top-0 left-0 right-0 z-[100] px-6 py-6 md:px-12 flex items-center justify-between backdrop-blur-sm bg-black/10 border-b border-white/5 pointer-events-auto">
             {/* Logo */}
             <div className="flex items-center relative z-[102]">
-                <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-xl font-bold tracking-tighter text-white z-50 mix-blend-difference cursor-pointer">
+                <Link href="/" onClick={() => { playClick(); setIsMenuOpen(false); }} className="text-xl font-bold tracking-tighter text-white z-50 mix-blend-difference cursor-pointer">
                     WARA gfx
                 </Link>
             </div>
@@ -55,6 +61,7 @@ export default function Header() {
                         <a
                             href={item.href}
                             onClick={(e) => handleScroll(e, item.href)}
+                            onMouseEnter={playHover}
                             className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 cursor-pointer relative z-50 px-2 py-1"
                         >
                             {item.name}

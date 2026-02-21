@@ -66,7 +66,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Welcome Text — Cinematic Reveal */}
-            <div className="mb-2 mt-[60px] relative z-10">
+            <div className="mb-2 mt-[60px] relative z-10 min-h-[40px] md:min-h-[80px]">
                 <CinematicText
                     text="Welcome to WARA gfx"
                     className="text-3xl md:text-6xl font-bold tracking-tighter text-white"
@@ -74,7 +74,7 @@ export default function Hero() {
                 />
             </div>
 
-            <div className="max-w-2xl mb-8 relative z-10">
+            <div className="max-w-2xl mb-8 relative z-10 min-h-[20px] md:min-h-[30px]">
                 <CinematicText
                     text="We turn your vision into cinematic reality."
                     className="text-white/60 text-sm md:text-xl"
