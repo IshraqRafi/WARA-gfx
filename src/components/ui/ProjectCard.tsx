@@ -101,7 +101,7 @@ export default function ProjectCard({ project }: ProjectProps) {
                     <img
                         src={project.imageUrl}
                         alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-30 transition-opacity duration-500 scale-110 group-hover:scale-100" // Cinematic zoom-out
+                        className="absolute inset-0 w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-105 group-hover:brightness-50"
                     />
                 )}
 
@@ -110,13 +110,6 @@ export default function ProjectCard({ project }: ProjectProps) {
                     className="absolute inset-0 z-20 pointer-events-none mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{ background: glare }}
                 />
-
-                {/* Content Container - Pushed back */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10" style={{ transform: "translateZ(30px)" }}>
-                    <PlayCircle className="w-12 h-12 text-white/50 mb-4 transition-all duration-300 transform group-hover:scale-110 group-hover:text-white" />
-                    <h3 className="text-xl font-bold text-white/90">{project.title}</h3>
-                    <span className="text-xs text-white/40 uppercase tracking-widest mt-2">{project.category}</span>
-                </div>
 
                 {/* Glitch Overlay (appears on hover start) */}
                 <AnimatePresence>
@@ -131,17 +124,29 @@ export default function ProjectCard({ project }: ProjectProps) {
                     )}
                 </AnimatePresence>
 
-                {/* Video/Active State (simulated by darker overlay for now) */}
-                <motion.div
-                    animate={{ opacity: isHovered ? 1 : 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 bg-black/60 z-10 flex items-center justify-center"
+                {/* Interactive Content Container - Hidden by default, appears on hover */}
+                <div
+                    className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ transform: "translateZ(30px)" }}
                 >
-                    <div className="flex items-center gap-2 text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                        <span>View Project</span>
-                        <ExternalLink className="w-4 h-4" />
-                    </div>
-                </motion.div>
+                    <motion.div
+                        initial={{ y: 20 }}
+                        animate={{ y: isHovered ? 0 : 20 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex flex-col items-center"
+                    >
+                        <PlayCircle className="w-12 h-12 text-white/50 mb-3" />
+                        <h3 className="text-xl font-bold text-white/95 leading-tight">{project.title}</h3>
+                        <span className="text-xs text-white/60 uppercase tracking-widest mt-1 mb-4">{project.category}</span>
+
+                        <div className="flex items-center gap-2 text-white bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 hover:bg-white/20 transition-colors">
+                            <span className="text-sm font-semibold tracking-wide">
+                                {project.category.toLowerCase().includes('youtube') ? 'View Video' : 'View Reel'}
+                            </span>
+                            <ExternalLink className="w-4 h-4" />
+                        </div>
+                    </motion.div>
+                </div>
             </div>
         </motion.a>
     );
