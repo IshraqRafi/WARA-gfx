@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { ExternalLink, PlayCircle } from "lucide-react";
+import { useAudio } from "@/hooks/useAudio";
 
 interface ProjectProps {
     project: {
@@ -18,7 +19,7 @@ interface ProjectProps {
 }
 
 export default function ProjectCard({ project }: ProjectProps) {
-    // ... (Hooks)
+    const { playProjectHover } = useAudio();
     const ref = useRef<HTMLAnchorElement>(null);
     const [isHovered, setIsHovered] = useState(false);
 
@@ -53,6 +54,7 @@ export default function ProjectCard({ project }: ProjectProps) {
     };
 
     const handleMouseEnter = () => {
+        playProjectHover();
         setIsHovered(true);
         scale.set(1.05);
     };

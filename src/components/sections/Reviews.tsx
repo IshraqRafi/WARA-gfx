@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import { useAudio } from "@/hooks/useAudio";
 
 interface Review {
     _id: string;
@@ -19,6 +20,33 @@ interface Review {
 
 function ReviewCard({ review, skewX, scale }: { review: Review; skewX: any; scale: any }) {
     const [isHovered, setIsHovered] = useState(false);
+    const { playStarScatter, playStarReturn } = useAudio();
+    const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+        playStarScatter();
+
+        // Clear any existing timeouts to prevent overlapping sounds
+        timeoutsRef.current.forEach(clearTimeout);
+        timeoutsRef.current = [];
+
+        // Schedule individual star return impact sounds
+        const numStars = review.rating || 5;
+        for (let i = 0; i < numStars; i++) {
+            const returnStart = 0.5 + (i * 0.2); // Matches return animation timing
+            const tid = setTimeout(() => {
+                playStarReturn();
+            }, returnStart * 1000);
+            timeoutsRef.current.push(tid);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        timeoutsRef.current.forEach(clearTimeout);
+        timeoutsRef.current = [];
+    };
 
     // Galaxy Scatter Animation
     const starVariant = {
@@ -65,8 +93,8 @@ function ReviewCard({ review, skewX, scale }: { review: Review; skewX: any; scal
     return (
         <motion.div
             style={{ skewX, scale }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             initial="rest"
             animate={isHovered ? "hover" : "rest"}
             className="w-[280px] md:w-[350px] p-6 md:p-8 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-white/20 hover:z-50 transition-colors select-none group relative overflow-visible flex-shrink-0"

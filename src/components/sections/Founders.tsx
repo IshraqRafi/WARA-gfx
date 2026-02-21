@@ -68,7 +68,9 @@ function FounderCard({ founder, index }: { founder: typeof founders[0], index: n
             />
 
             {/* Avatar with Sonar Effect */}
-            <div className="relative w-32 h-32 md:w-56 md:h-56 mb-6 md:mb-8 z-10 transition-transform duration-500 group-hover:scale-105">
+            <div
+                className="relative w-32 h-32 md:w-56 md:h-56 mb-6 md:mb-8 z-10 transition-transform duration-500 group-hover:scale-105"
+            >
 
                 {/* Sonar Ripple Effect - Universal (Always Active) */}
                 <div className="absolute inset-0 rounded-full border border-white/20 scale-100 animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite] opacity-30" />
