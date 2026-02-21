@@ -44,10 +44,10 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Center: Version & Copy - Centered by flex order or margin */}
+                {/* Right: Version & Copy - Horizontal on mobile now */}
                 <div className="flex flex-row items-center gap-2 md:gap-4 order-3 md:order-2 w-full md:w-auto justify-center">
                     <span className="text-white/40 font-bold">v2.0.5</span>
-                    <span>&copy; 2026 WARA GFX</span>
+                    <span>&copy; 2024 WARA GFX</span>
                 </div>
 
                 {/* Right: Live Clock & Latency - Right aligned */}

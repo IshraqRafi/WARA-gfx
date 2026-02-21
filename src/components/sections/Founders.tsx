@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Linkedin, Mail, Twitter } from "lucide-react";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 import { useRef } from "react";
 
 const founders = [
@@ -11,9 +11,9 @@ const founders = [
         skills: ["Branding", "Content Strategy", "Marketing"],
 
         socials: [
-            { icon: Twitter, href: "#" },
-            { icon: Linkedin, href: "#" },
-            { icon: Mail, href: "mailto:walid@waragfx.com" },
+            { icon: Instagram, href: "https://www.instagram.com/walidislamm/" },
+            { icon: Facebook, href: "https://www.facebook.com/walid.al.islamm" },
+            { icon: MessageCircle, href: "https://wa.me/8801977849511" },
         ],
         image: "/founder_walid.jpg",
     },
@@ -22,9 +22,9 @@ const founders = [
         role: "Co-Founder & Creative Director",
         skills: ["Motion Graphics", "3D Design", "Video Editing"],
         socials: [
-            { icon: Twitter, href: "#" },
-            { icon: Linkedin, href: "#" },
-            { icon: Mail, href: "mailto:ishraq@waragfx.com" },
+            { icon: Instagram, href: "https://www.instagram.com/ishraqrafi/" },
+            { icon: Facebook, href: "https://www.facebook.com/ishraq.rafi.2024/" },
+            { icon: MessageCircle, href: "https://wa.me/8801906068821" },
         ],
         image: "/founder_ishraq.jpg",
     },
