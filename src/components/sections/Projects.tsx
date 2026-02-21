@@ -16,7 +16,7 @@ const tabs = [
 ];
 
 export default function Projects() {
-    const [activeTab, setActiveTab] = useState("YouTube");
+    const [activeTab, setActiveTab] = useState("all");
     const [projects, setProjects] = useState<any[]>([]);
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
