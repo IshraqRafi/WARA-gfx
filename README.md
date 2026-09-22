@@ -1,5 +1,5 @@
 # WARA gfx
-<img width="2146" height="1660" alt="1" src="https://github.com/user-attachments/assets/3f19e4b0-712e-42e7-a53e-517021839dc8" />
+<img width="2146/2" height="1660/2" alt="1" src="https://github.com/user-attachments/assets/3f19e4b0-712e-42e7-a53e-517021839dc8" />
 
 Creative agency portfolio website built for WARA Graphics.
 
