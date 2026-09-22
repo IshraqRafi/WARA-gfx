@@ -13,6 +13,13 @@ https://wara-gfx.vercel.app
 - Contact form
 - Responsive design
 
+## Project Structure
+
+src/
+components/
+public/
+app/
+
 ## Tech Stack
 - Next.js
 - TypeScript
@@ -26,6 +33,17 @@ https://wara-gfx.vercel.app
 
 
 
-## My Role
-Designed and developed the entire frontend.
-Implemented responsive layouts and deployment.
+## My Contribution
+
+- Designed the UI/UX
+- Developed the frontend using Next.js and TypeScript
+- Implemented responsive layouts
+- Deployed the application on Vercel
+- Integrated portfolio showcase and contact system
+
+
+## Challenges Faced
+
+- Creating a smooth portfolio filtering experience
+- Maintaining consistent branding throughout the site
+- Optimizing responsiveness across devices
