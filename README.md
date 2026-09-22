@@ -13,13 +13,6 @@ https://wara-gfx.vercel.app
 - Contact form
 - Responsive design
 
-## Project Structure
-
-src/
-components/
-public/
-app/
-
 ## Tech Stack
 - Next.js
 - TypeScript
